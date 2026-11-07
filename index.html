@@ -37,7 +37,7 @@
   <h1>KAN<span>SEI</span></h1>
   <div class="sub">drift in X3D · Babylon WebGPU</div>
   <p>A night-drift racing game with four cars and five circuits. Every world in it is an X3D file, and the physics is a separate deterministic simulation, so the same recorded lap plays back identically in any renderer. This page runs it in <a href="https://www.babylonjs.com">Babylon.js</a> 9.32.0 in WebGPU mode, through a small X3D reader.</p>
-  <a class="play" href="kansei/v1/">Play v1</a>
+  <a class="play" href="kansei/v1.1/">Play v1.1</a>
   <div class="small">Keyboard: <kbd>W</kbd> gas, <kbd>S</kbd> brake, <kbd>A</kbd> <kbd>D</kbd> steer, <kbd>Space</kbd> handbrake, <kbd>Shift</kbd> boost, <kbd>C</kbd> camera, <kbd>M</kbd> sound. Gamepad and touch work too.</div>
 
   <section>
@@ -63,6 +63,7 @@
     <h2>Versions</h2>
     <table>
       <tr><th>version</th><th>date</th><th>what</th></tr>
+      <tr><td><a href="kansei/v1.1/">v1.1</a></td><td>7 Nov 2026</td><td>Same game and picture as v1. Textures with fallback addresses are looked up once instead of about 2,350 failed requests, so it starts faster from a sub-folder; the Timing button is shared with the brain page.</td></tr>
       <tr><td><a href="kansei/v1/">v1</a></td><td>7 Nov 2026</td><td>First Babylon WebGPU build, opt-in Timing button.</td></tr>
     </table>
     <p class="small" style="margin-top:12px">Each version lives in its own folder and is never overwritten. The code is in <a href="https://github.com/hagopjay/x3d.loom">x3d.loom</a>: the game in <code>x3d.drift</code>, the Babylon port in <code>x3d.webgpu/demo</code>.</p>
