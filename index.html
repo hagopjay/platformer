@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KANSEI · drift in X3D · Babylon WebGPU</title>
+<meta name="description" content="KANSEI, a night-drift racing game whose worlds are X3D files, drawn by Babylon.js in WebGPU.">
+<meta name="color-scheme" content="dark">
+<style>
+  :root { --ink: #07080d; --panel: #10131d; --line: rgba(239,232,218,.16); --washi: #efe8da; --dim: #a9a79f; --neon: #ff5a3c; --cyan: #5cc8ff; }
+  * { box-sizing: border-box; }
+  html { background: var(--ink); }
+  body { margin: 0; color: var(--washi); background: radial-gradient(1200px 600px at 78% -10%, #1b2036 0%, var(--ink) 60%); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; min-height: 100vh; }
+  main { max-width: 880px; margin: 0 auto; padding: 56px 20px 72px; }
+  h1 { font-size: clamp(40px, 9vw, 76px); letter-spacing: .08em; margin: 0; line-height: 1; font-weight: 800; }
+  h1 span { color: var(--neon); }
+  .sub { color: var(--cyan); letter-spacing: .32em; text-transform: uppercase; font-size: 12px; margin: 10px 0 28px; }
+  p { max-width: 62ch; margin: 0 0 14px; }
+  .play { display: inline-block; margin: 14px 0 6px; padding: 14px 34px; background: var(--neon); color: #1a0905; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; border-radius: 6px; }
+  .play:hover, .play:focus-visible { background: #ff7a5e; outline: 2px solid var(--washi); outline-offset: 3px; }
+  .small { color: var(--dim); font-size: 14px; }
+  section { margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); }
+  h2 { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--dim); margin: 0 0 12px; font-weight: 600; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .card b { display: block; margin-bottom: 4px; }
+  code, kbd { font: 13px ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: #0b0d14; border: 1px solid var(--line); border-radius: 4px; padding: 1px 6px; }
+  a { color: var(--cyan); }
+  ul { padding-left: 20px; margin: 0; } li { margin: 4px 0; }
+  table { border-collapse: collapse; width: 100%; max-width: 640px; font-size: 14px; }
+  td, th { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+  th { color: var(--dim); font-weight: 600; }
+</style>
+</head>
+<body>
+<main>
+  <h1>KAN<span>SEI</span></h1>
+  <div class="sub">drift in X3D · Babylon WebGPU</div>
+  <p>A night-drift racing game with four cars and five circuits. Every world in it is an X3D file, and the physics is a separate deterministic simulation, so the same recorded lap plays back identically in any renderer. This page runs it in <a href="https://www.babylonjs.com">Babylon.js</a> 9.32.0 in WebGPU mode, through a small X3D reader.</p>
+  <a class="play" href="kansei/v1/">Play v1</a>
+  <div class="small">Keyboard: <kbd>W</kbd> gas, <kbd>S</kbd> brake, <kbd>A</kbd> <kbd>D</kbd> steer, <kbd>Space</kbd> handbrake, <kbd>Shift</kbd> boost, <kbd>C</kbd> camera, <kbd>M</kbd> sound. Gamepad and touch work too.</div>
+
+  <section>
+    <h2>What you need</h2>
+    <div class="cards">
+      <div class="card"><b>A WebGPU browser</b>Chrome or Edge 113 or later, Safari 26, Firefox 141 or later. If it says no adapter answered, the game tells you.</div>
+      <div class="card"><b>Windows with an Intel UHD 620 or similar</b>Chrome may block the GPU for WebGPU. Open <code>chrome://flags/#enable-unsafe-webgpu</code>, set it to Enabled, relaunch. That fixed it on one such machine.</div>
+      <div class="card"><b>Timing button</b>A small "Timing" pill at the lower left, off until you press it. It measures about 20 seconds of frame times on your machine, shows p50, p95 and p99 and a block you can copy. Nothing is uploaded.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What has been checked</h2>
+    <ul>
+      <li>The simulation hash matches the original X_ITE page on 6 of 6 recorded views, so both pictures show the same car state on the same circuit.</li>
+      <li>The Babylon picture scores 24.4 to 32.8 dB PSNR against X_ITE 16.5.1 on those views (software adapter, 640 x 360). That is correctness evidence, not a speed claim.</li>
+      <li>No frame rate from a real GPU has been published yet. The Timing button is how those numbers get collected, by whoever chooses to press it.</li>
+      <li>The sound is the game's own synthesiser, unchanged from the original.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Versions</h2>
+    <table>
+      <tr><th>version</th><th>date</th><th>what</th></tr>
+      <tr><td><a href="kansei/v1/">v1</a></td><td>7 Nov 2026</td><td>First Babylon WebGPU build, opt-in Timing button.</td></tr>
+    </table>
+    <p class="small" style="margin-top:12px">Each version lives in its own folder and is never overwritten. The code is in <a href="https://github.com/hagopjay/x3d.loom">x3d.loom</a>: the game in <code>x3d.drift</code>, the Babylon port in <code>x3d.webgpu/demo</code>.</p>
+  </section>
+</main>
+</body>
+</html>
