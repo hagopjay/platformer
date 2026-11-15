@@ -3,7 +3,8 @@
 Hosts playable builds of KANSEI, a night-drift racing game whose worlds are X3D files, drawn by Babylon.js (WebGPU).
 
 - Site: https://hagopjay.github.io/platformer/
-- `kansei/v1.1/` is the current build: the same game and picture as v1, with the texture-fallback fix (about 2,350 failed requests on the live page before).
+- `kansei/roam-v1/` is KANSEI v1.1 plus road bumps, a moving suspension, brake fade and gamepad rumble (source: `x3d.roam` in x3d.loom). The front-page Play button still opens v1.1.
+- `kansei/v1.1/` is the stable build: the same game and picture as v1, with the texture-fallback fix (about 2,350 failed requests on the live page before).
 - `kansei/v1/` is the first Babylon WebGPU build. Each version gets its own folder and is never overwritten.
 - `index.html` is the landing page.
 
